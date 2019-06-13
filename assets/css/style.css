@@ -1,0 +1,68 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main-window {
+  position: relative;
+  margin-top: 200px;
+  margin-left: 100px;
+  height: 450px;
+  background-color: black;
+  width: 500px;
+  border: 3px dotted white;
+}
+  
+h1 {
+  
+   margin-top: 80px;
+   margin-left: 50px;
+   margin-right: auto;
+   padding: 0;
+   font-size: 150px;
+   line-height: 100px;
+   font-family: 'Ruge Boogie', cursive;
+}
+ h2 {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0px;
+    
+    
+ }
+.image-window {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    left: 0;
+    right: 0;
+    top: 45px;
+    bottom: 0; 
+    float: left;
+    border: white;
+    padding: 15px;  
+    border-top: white dotted;
+}
+ .content {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    left: 50%;
+    top: 0px; 
+    border-left: 3px white dotted;
+   
+    padding: 10px;
+    bottom: 0px;
+     
+ }
+
+ img {
+     position: absolute;
+     width: 150px;
+     left: 50px;
+ }
+ p {
+     text-align: center;
+ }
