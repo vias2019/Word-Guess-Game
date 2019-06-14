@@ -4,18 +4,22 @@ var listOfWords = [
      { word: "sad", img: "assets/images/sad-s.jpg", music: "" },
 ];
 
-var random=0;
-var randomWord = (listOfWords[random].word);
-var randomWordLength = randomWord.length;
+var random;
+var randomWord;// = (listOfWords[random].word);
+var randomWordLength;// = randomWord.length;
 //console.log (randomWord+randomWordLength);
 
 
 var guessNumber = 10;
 var dash = ["-"];
+var numberOfAnswersArray = [];
 function empty() {
-     dash=[];
+     dash = [];
+     numberOfAnswersArray=[];
+     guessNumber=10;
+     numberOfAnswers.textContent="";
 }
-var  wins =0;
+var wins = 0;
 
 var correctAnswer = document.getElementById("correct-answer");
 var numberOfWins = document.getElementById("number-of-wins");
@@ -25,7 +29,7 @@ var numberOfAnswers = document.getElementById("number-of-answers");
 var image = document.getElementById("picture");
 
 //create array for wrong answers
-var numberOfAnswersArray = [];
+
 
 
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -35,11 +39,14 @@ var start = true;
 document.onkeyup = function (event) {
 
      var userGuess = event.key;
-     
-    
+
+
      if (start == true) {
-          random=[Math.floor(Math.random() * listOfWords.length)];
+          random = [Math.floor(Math.random() * listOfWords.length)];
+          randomWord= (listOfWords[random].word);
+          randomWordLength = randomWord.length;
           empty();
+        
           //remove elements from dash to match length of the random word
           do { dash.push('-'); }
           while (dash.length < randomWordLength);
@@ -48,10 +55,10 @@ document.onkeyup = function (event) {
           numberOfGuesses.textContent = guessNumber;
           start = false;
      }
-    
+
      if (alphabet.includes(userGuess)) {
 
-          if (guessNumber > 0 && dash.join("")!==randomWord){
+          if (guessNumber > 0 && dash.join("") !== randomWord) {
 
                //if letter is in the word
                //replace Dash with a letter
@@ -73,24 +80,22 @@ document.onkeyup = function (event) {
                     //new var to check element number in random word
                     var elementArray = randomWord.indexOf(userGuess);
                     //assign new value to dash array
-                    dash[elementArray]  = userGuess;
+                    dash[elementArray] = userGuess;
                     //show new array in html
                     currentWord.textContent = dash.join(" ");
                     //decreade number of guesses
                     guessNumber--;
                     //show number of guesses in html
                     numberOfGuesses.textContent = guessNumber;
-                    if (dash.join("")==randomWord) {
+                    if (dash.join("") == randomWord) {
                          wins++;
-                         numberOfWins.textContent =wins;
+                         numberOfWins.textContent = wins;
                          correctAnswer.textContent = randomWord;
                          image.src = listOfWords[random].img;
-                         //start=true;
+                         start=true;
                     }
-                    
-                   
-
                } else {
+                    console.log("Hello");
                     // add a wrong letter to array
                     numberOfAnswersArray.push(userGuess);
                     //decrease number of guesses 
@@ -99,16 +104,14 @@ document.onkeyup = function (event) {
                     numberOfGuesses.textContent = guessNumber;
                     //show array a wrong letters
                     numberOfAnswers.textContent = numberOfAnswersArray.join();
-                    if (guessNumber==0){
+                    if (guessNumber == 0) {
                          correctAnswer.textContent = randomWord;
-                         image.src = listOfWords[random].img; 
-                         
+                         image.src = listOfWords[random].img;
                     }
                }
 
-          } else {
-              return;
-               
+         
+
           }
      }
 
