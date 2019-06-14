@@ -19,6 +19,7 @@ function empty() {
      guessNumber=10;
      numberOfAnswers.textContent="";
 }
+
 var wins = 0;
 
 var correctAnswer = document.getElementById("correct-answer");
@@ -93,6 +94,7 @@ document.onkeyup = function (event) {
                          correctAnswer.textContent = randomWord;
                          image.src = listOfWords[random].img;
                          start=true;
+                         alert("You won!");
                     }
                } else {
                     console.log("Hello");
@@ -107,6 +109,10 @@ document.onkeyup = function (event) {
                     if (guessNumber == 0) {
                          correctAnswer.textContent = randomWord;
                          image.src = listOfWords[random].img;
+                         alert("You lost!");
+                         wins=0;
+                         numberOfWins.textContent=wins;
+                         start=true;
                     }
                }
 
